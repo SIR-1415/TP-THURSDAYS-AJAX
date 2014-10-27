@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<script src="jquery/jquery-2.1.1.js"></script>
+		<script>
+			$(document).ready(function () {
+				$("#butNumbers").click(function () {
+					//alert("ooops!!!");
+					$.ajax(
+						{
+							url: "getNumber.php",
+							type: "GET",
+							dataType : "html",
+							async : true,
+							success: function (response) {
+								//$("<p/>").html(response);
+								//$("#container").append(newnumber);
+								$("#container").append($("<p/>").html(response));
+							},
+							error : function (Xobj,errorText) {
+								alert(errorText);
+							}
+						}
+					)
+				})
+			})
+		</script>
+		
+	</head>
+	<body>
+		<input type="button" value="get numbers" id="butNumbers"/>
+		<div id="container"></div>
+	</body>
+</html>

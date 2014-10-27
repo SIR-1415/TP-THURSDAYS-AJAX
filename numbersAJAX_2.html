@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script src="jquery/jquery-2.1.1.js"></script>
+		<script>
+			$(document).ready(function () {
+				$("#butNumbers").click(function () {
+					//alert("ooops!!!");
+					$.ajax(
+						{
+							url: "getNumber_2.php",
+							type: "GET",
+							dataType : "json",
+							async : true,
+							data : {
+								"size" : $("#isize").val()
+							},
+							success: function (response) {
+								//$("<p/>").html(response);
+								//$("#container").append(newnumber);
+									$("#container").append("<div/>");
+									$.each(response.number,function (i,val){alert(val)})
+									//alert(response.number);
+							},
+							error : function (Xobj,errorText) {
+								alert(errorText);
+							}
+						}
+					)
+				})
+			})
+		</script>
+		
+	</head>
+	<body>
+		<input type="text" id="isize" name="size"/>
+		<input type="button" value="get numbers" id="butNumbers"/>
+		<div id="container"></div>
+	</body>
+</html>
